@@ -1,0 +1,52 @@
+{
+  "name": "@hypobox/react",
+  "version": "0.0.1",
+  "description": "Tiny React Box component.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "node test",
+    "test:watch": "nodemon test",
+    "format": "prettier-standard --format",
+    "lint": "prettier-standard  --lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier-standard --lint && prettier-standard --format --staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sure-thing/hypobox.git"
+  },
+  "author": "estrattonbailey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sure-thing/hypobox/issues"
+  },
+  "homepage": "https://github.com/sure-thing/hypobox#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/register": "^7.11.5",
+    "baretest": "^2.0.0",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.2.5",
+    "nodemon": "^2.0.4",
+    "prettier-standard": "^16.4.1",
+    "react-dom": "^17.0.1",
+    "semantic-release": "^17.2.1"
+  },
+  "dependencies": {
+    "hypostyle": "^2.0.0-beta.2",
+    "react": "^17.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
