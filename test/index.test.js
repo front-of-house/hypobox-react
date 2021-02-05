@@ -7,14 +7,22 @@ import { Hypo, Box } from '../'
 
 module.exports = (test, assert) => {
   test('base', () => {
-    const hypo = hypostyle(defaultTheme)
+    const hypo = hypostyle({
+      ...defaultTheme,
+      tokens: {
+        color: {
+          primary: 'tomato'
+        },
+        ...defaultTheme.tokens
+      }
+    })
 
-    const html = renderToString(
+    renderToString(
       <Hypo value={hypo}>
-        <Box c='blue' />
+        <Box c='primary' />
       </Hypo>
     )
     const stylesheet = hypo.flush()
-    assert(stylesheet.includes('color:blue'))
+    assert(stylesheet.includes('color:tomato'))
   })
 }

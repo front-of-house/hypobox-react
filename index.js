@@ -3,12 +3,7 @@ const React = require('react')
 const context = React.createContext({})
 const Hypo = context.Provider
 
-function Box({
-  as = 'div',
-  className = '',
-  css,
-  ...props
-}) {
+function Box ({ as = 'div', className = '', css, ...props }) {
   const hypostyle = React.useContext(context)
   const cleaned = hypostyle.pick(props)
 
@@ -27,5 +22,5 @@ function Box({
 
 module.exports = {
   Hypo,
-  Box,
+  Box
 }

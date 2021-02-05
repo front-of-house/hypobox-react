@@ -1,10 +1,7 @@
 console.time('test')
 
 require('@babel/register')({
-  presets: [
-    '@babel/preset-env',
-    '@babel/preset-react',
-  ]
+  presets: ['@babel/preset-env', '@babel/preset-react']
 })
 
 const test = require('baretest')('hypobox')
