@@ -37,12 +37,15 @@
     "husky": "^4.2.5",
     "nodemon": "^2.0.4",
     "prettier-standard": "^16.4.1",
+    "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "semantic-release": "^17.2.1"
   },
+  "peerDependencies": {
+    "react": "^16.x"
+  },
   "dependencies": {
-    "hypostyle": "^2.3.0",
-    "react": "^17.0.1"
+    "hypostyle": "^2.3.0"
   },
   "config": {
     "commitizen": {
