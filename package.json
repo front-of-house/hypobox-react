@@ -45,7 +45,7 @@
     "react": "^16.x"
   },
   "dependencies": {
-    "hypostyle": "^2.3.0"
+    "hypostyle": "^2.4.0"
   },
   "config": {
     "commitizen": {
