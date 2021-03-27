@@ -3,7 +3,10 @@ const React = require('react')
 const context = React.createContext({})
 
 export function Hypo ({ hypostyle, children }) {
-  return <context.Provider value={hypostyle}>{children}</context.Provider>
+  return React.createElement(context.Provider, {
+    value: hypostyle,
+    children
+  })
 }
 
 const Box = React.forwardRef(
