@@ -2,7 +2,7 @@ const React = require('react')
 
 const context = React.createContext({})
 
-export function Hypo ({ hypostyle, children }) {
+function Hypo ({ hypostyle, children }) {
   return React.createElement(context.Provider, {
     value: hypostyle,
     children
