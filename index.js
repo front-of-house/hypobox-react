@@ -1,10 +1,13 @@
 const React = require('react')
 
 const context = React.createContext({})
-const Hypo = context.Provider
+
+export function Hypo ({ hypostyle, children }) {
+  return <context.Provider value={hypostyle}>{children}</context.Provider>
+}
 
 const Box = React.forwardRef(
-  ({ as = 'div', className = '', css, ...props }, ref) => {
+  ({ as = 'div', className = '', css, cx, ...props }, ref) => {
     const hypostyle = React.useContext(context)
     const cleaned = hypostyle.pick(props)
 
@@ -13,7 +16,8 @@ const Box = React.forwardRef(
       className: [
         className,
         hypostyle.css(cleaned.styles),
-        css && hypostyle.css(css)
+        css && hypostyle.css(css),
+        cx && hypostyle.css(cx)
       ]
         .filter(Boolean)
         .map(s => s.trim())

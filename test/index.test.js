@@ -10,7 +10,7 @@ module.exports = (test, assert) => {
     const hypo = hypostyle()
 
     const html = renderToString(
-      <Hypo value={hypo}>
+      <Hypo hypostyle={hypo}>
         <Box />
       </Hypo>
     )
@@ -21,7 +21,7 @@ module.exports = (test, assert) => {
   test('base, pick', () => {
     const hypo = hypostyle(presets)
     const html = renderToString(
-      <Hypo value={hypo}>
+      <Hypo hypostyle={hypo}>
         <Box o={1} style={{ background: 'blue' }} />
       </Hypo>
     )
@@ -34,7 +34,7 @@ module.exports = (test, assert) => {
   test('with as', () => {
     const hypo = hypostyle(presets)
     const html = renderToString(
-      <Hypo value={hypo}>
+      <Hypo hypostyle={hypo}>
         <Box as='img' src='' />
       </Hypo>
     )
@@ -45,12 +45,25 @@ module.exports = (test, assert) => {
   test('className', () => {
     const hypo = hypostyle(presets)
     const html = renderToString(
-      <Hypo value={hypo}>
+      <Hypo hypostyle={hypo}>
         <Box className='foo' w={10} />
       </Hypo>
     )
 
     assert(/foo\s/.test(html))
+  })
+
+  test('css/cx', () => {
+    const hypo = hypostyle(presets)
+    renderToString(
+      <Hypo hypostyle={hypo}>
+        <Box css={{ c: 'white' }} cx={{ bg: 'white' }} />
+      </Hypo>
+    )
+    const sheet = hypo.flush()
+
+    assert(/color:white/.test(sheet))
+    assert(/background:white/.test(sheet))
   })
 
   test('configure', () => {
@@ -63,7 +76,7 @@ module.exports = (test, assert) => {
       }
     })
     renderToString(
-      <Hypo value={hypo}>
+      <Hypo hypostyle={hypo}>
         <Box className='foo' c='b' />
       </Hypo>
     )
