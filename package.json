@@ -44,14 +44,15 @@
     "typescript": "^4.2.3"
   },
   "peerDependencies": {
-    "react": "^16.x"
-  },
-  "dependencies": {
-    "hypostyle": "^2.5.1"
+    "react": "^16.x",
+    "hypostyle": "^2.x"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "hypostyle": "^2.6.0"
   }
 }
