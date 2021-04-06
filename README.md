@@ -13,9 +13,9 @@ npm i @hypobox/react hypostyle
 
 ## Usage
 
-To use `hypobox`, first have a look at
+To use `@hypobox/react`, first have a look at
 [hypostyle](https://github.com/sure-thing/hypostyle). Basically, you provide
-`hypobox` a `hypostyle` instance, and then you style components using attributes
+`@hypobox/react` a `hypostyle` instance, and then you style components using attributes
 on React components that match your `hypostyle` setup.
 
 ### Setup
