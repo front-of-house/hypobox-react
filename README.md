@@ -61,13 +61,13 @@ Just like `hypostyle`, you can pass arrays or objects to denote responsive
 values:
 
 ```jsx
-<Box d={['none', 'none', 'flex']} />
+<Box display={['none', 'none', 'flex']} />
 ```
 
 Or:
 
 ```jsx
-<Box d={{ 2: 'flex' }} />
+<Box display={{ 2: 'flex' }} />
 ```
 
 ### Macros & Variants
@@ -103,31 +103,18 @@ You can reference those values like this:
 ### Custom Styles
 
 For props you don't have configured as shorthands, or for custom values and
-breakpoints, use the `css` prop. Examples:
+breakpoints, use the `cx` prop. Examples:
 
 ```jsx
-<Box css={{ c: 'tomato' }} />
-<Box css={{
+<Box cx={{ c: 'tomato' }} />
+<Box cx={{
   '@media (max-width: 567px)': {
-    d: 'none'
+    display: 'none'
   }
 }} />
 ```
 
-For compatibility with other tools like `styled-components` that also provide a
-`css` prop, `hypobox` also supports a `cx` prop.
-
-```jsx
-<Box
-  cx={{
-    '&:focus': {
-      outline: '1px dashed tomato'
-    }
-  }}
-/>
-```
-
-Both `css` and `cx` also support passing a function. The function will be
+`cx` also supports passing a function. The function will be
 callled with the full `theme` you passed you `hypostyle` instance:
 
 ```jsx
@@ -136,6 +123,22 @@ callled with the full `theme` you passed you `hypostyle` instance:
     c: theme.tokens.colors.primary
   })}
 />
+```
+
+### Defaults and Extending Components
+
+If you like, `compose` provides a familiar interface:
+
+```javascript
+import { compose } from '@hypobox/react'
+
+const H1 = compose('h1', { fs: 1 })
+```
+
+And you can use it to extend components as well:
+
+```javascript
+const Headline = compose(H1, { color: 'primary' })
 ```
 
 ### Server Rendering
