@@ -10,7 +10,7 @@ function Hypo ({ hypostyle, children }) {
 }
 
 const Box = React.forwardRef(
-  ({ as = 'div', className = '', css, cx, ...props }, ref) => {
+  ({ as = 'div', className = '', cx, ...props }, ref) => {
     const hypostyle = React.useContext(context)
     const cleaned = hypostyle.pick(props)
 
@@ -18,9 +18,10 @@ const Box = React.forwardRef(
       ref,
       className: [
         className,
-        hypostyle.css(cleaned.styles),
-        css && hypostyle.css(css),
-        cx && hypostyle.css(cx)
+        hypostyle.css({
+          ...cleaned.styles,
+          ...hypostyle.style(cx || {})
+        })
       ]
         .filter(Boolean)
         .map(s => s.trim())
@@ -30,7 +31,27 @@ const Box = React.forwardRef(
   }
 )
 
+function compose (as, styles) {
+  return React.forwardRef((props, ref) => {
+    const hypostyle = React.useContext(context)
+
+    const p = {
+      ref,
+      ...props,
+      cx: {
+        ...hypostyle.style(styles),
+        ...hypostyle.style(props.cx || {})
+      }
+    }
+
+    return typeof as !== 'string'
+      ? React.createElement(as, p)
+      : React.createElement(Box, { as, ...p })
+  })
+}
+
 module.exports = {
   Hypo,
-  Box
+  Box,
+  compose
 }

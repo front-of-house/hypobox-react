@@ -36,6 +36,7 @@
     "commitizen": "^4.2.1",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^4.2.5",
+    "hypostyle": "^2.9.1",
     "nodemon": "^2.0.4",
     "prettier-standard": "^16.4.1",
     "react": "^17.0.1",
@@ -45,14 +46,12 @@
   },
   "peerDependencies": {
     "react": "^16.x",
-    "hypostyle": "^2.x"
+    "hypostyle": "^2.9.1"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "hypostyle": "^2.6.0"
-  }
+  "dependencies": {}
 }
