@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server'
 import { hypostyle } from 'hypostyle'
 import presets from 'hypostyle/presets'
 
-import { Hypo, Box } from '../'
+import { Hypo, Box, compose } from '../'
 
 module.exports = (test, assert) => {
   test('no styles', () => {
@@ -22,7 +22,7 @@ module.exports = (test, assert) => {
     const hypo = hypostyle(presets)
     const html = renderToString(
       <Hypo hypostyle={hypo}>
-        <Box o={1} style={{ background: 'blue' }} />
+        <Box order={1} style={{ background: 'blue' }} />
       </Hypo>
     )
     const sheet = hypo.flush()
@@ -57,12 +57,11 @@ module.exports = (test, assert) => {
     const hypo = hypostyle(presets)
     renderToString(
       <Hypo hypostyle={hypo}>
-        <Box css={{ c: 'white' }} cx={{ bg: 'white' }} />
+        <Box cx={{ bg: 'white' }} />
       </Hypo>
     )
     const sheet = hypo.flush()
 
-    assert(/color:white/.test(sheet))
     assert(/background:white/.test(sheet))
   })
 
@@ -83,5 +82,44 @@ module.exports = (test, assert) => {
     const sheet = hypo.flush()
 
     assert(/color:blue/.test(sheet))
+  })
+
+  test('compose', () => {
+    const hypo = hypostyle(presets)
+
+    const H1 = compose('h1', {
+      fs: '30px'
+    })
+    const H2 = compose('h2', {
+      fs: '20px'
+    })
+    const A = compose('a', {
+      c: 'blue'
+    })
+    const A2 = compose(A, {
+      c: 'red'
+    })
+    const Fn = compose('div', theme => ({
+      fs: theme.tokens.fontSize[1]
+    }))
+
+    const html = renderToString(
+      <Hypo hypostyle={hypo}>
+        <H1 />
+        <H2 />
+        <A2 />
+        <Fn />
+      </Hypo>
+    )
+    const sheet = hypo.flush()
+
+    assert(/<h1/.test(html))
+    assert(/<h2/.test(html))
+    assert(/<a/.test(html))
+    assert(/font-size:30px/.test(sheet))
+    assert(/font-size:20px/.test(sheet))
+    assert(/color:red/.test(sheet))
+    assert(!/color:blue/.test(sheet)) // blue is overridden
+    assert(/font-size/.test(sheet))
   })
 }
