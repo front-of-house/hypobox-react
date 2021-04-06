@@ -91,7 +91,8 @@ module.exports = (test, assert) => {
       fs: '30px'
     })
     const H2 = compose('h2', {
-      fs: '20px'
+      fs: '20px',
+      c: 'tomato'
     })
     const A = compose('a', {
       c: 'blue'
@@ -106,7 +107,7 @@ module.exports = (test, assert) => {
     const html = renderToString(
       <Hypo hypostyle={hypo}>
         <H1 />
-        <H2 />
+        <H2 c='black' />
         <A2 />
         <Fn />
       </Hypo>
@@ -118,6 +119,7 @@ module.exports = (test, assert) => {
     assert(/<a/.test(html))
     assert(/font-size:30px/.test(sheet))
     assert(/font-size:20px/.test(sheet))
+    assert(!/color:tomato/.test(sheet))
     assert(/color:red/.test(sheet))
     assert(!/color:blue/.test(sheet)) // blue is overridden
     assert(/font-size/.test(sheet))

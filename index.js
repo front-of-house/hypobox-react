@@ -34,12 +34,14 @@ const Box = React.forwardRef(
 function compose (as, styles) {
   return React.forwardRef((props, ref) => {
     const hypostyle = React.useContext(context)
+    const cleaned = hypostyle.pick(props)
 
     const p = {
       ref,
-      ...props,
+      ...cleaned.props,
       cx: {
         ...hypostyle.style(styles),
+        ...cleaned.styles,
         ...hypostyle.style(props.cx || {})
       }
     }
