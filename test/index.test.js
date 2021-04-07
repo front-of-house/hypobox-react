@@ -53,16 +53,18 @@ module.exports = (test, assert) => {
     assert(/foo\s/.test(html))
   })
 
-  test('css/cx', () => {
+  test('cx', () => {
     const hypo = hypostyle(presets)
     renderToString(
       <Hypo hypostyle={hypo}>
         <Box cx={{ bg: 'white' }} />
+        <Box cx={theme => ({ fontSize: theme.tokens.fontSize[0] })} />
       </Hypo>
     )
     const sheet = hypo.flush()
 
     assert(/background:white/.test(sheet))
+    assert(/font-size/.test(sheet))
   })
 
   test('configure', () => {
@@ -123,5 +125,24 @@ module.exports = (test, assert) => {
     assert(/color:red/.test(sheet))
     assert(!/color:blue/.test(sheet)) // blue is overridden
     assert(/font-size/.test(sheet))
+  })
+
+  test('compose overrides', () => {
+    const hypo = hypostyle(presets)
+
+    const H1 = compose('h1', {
+      color: 'blue',
+      fs: [2, 2, 1]
+    })
+
+    renderToString(
+      <Hypo hypostyle={hypo}>
+        <H1 c='tomato' fontSize='20px' />
+      </Hypo>
+    )
+    const sheet = hypo.flush()
+
+    assert(/color:tomato/.test(sheet))
+    assert(/font-size:20px/.test(sheet))
   })
 }

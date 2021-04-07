@@ -20,7 +20,7 @@ const Box = React.forwardRef(
         className,
         hypostyle.css({
           ...cleaned.styles,
-          ...hypostyle.style(cx || {})
+          ...hypostyle.explode(cx || {})
         })
       ]
         .filter(Boolean)
@@ -40,9 +40,10 @@ function compose (as, styles) {
       ref,
       ...cleaned.props,
       cx: {
-        ...hypostyle.style(styles),
-        ...cleaned.styles,
-        ...hypostyle.style(props.cx || {})
+        // explode everything to allow for overrides
+        ...hypostyle.explode(styles),
+        ...hypostyle.explode(cleaned.styles),
+        ...hypostyle.explode(props.cx || {})
       }
     }
 
