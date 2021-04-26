@@ -2,6 +2,15 @@ const React = require('react')
 
 const context = React.createContext({})
 
+function useHypostyle () {
+  return React.useContext(context)
+}
+
+function useTheme () {
+  const { theme } = useHypostyle()
+  return theme
+}
+
 function Hypo ({ hypostyle, children }) {
   return React.createElement(context.Provider, {
     value: hypostyle,
@@ -11,7 +20,7 @@ function Hypo ({ hypostyle, children }) {
 
 const Box = React.forwardRef(
   ({ as = 'div', className = '', cx, ...props }, ref) => {
-    const hypostyle = React.useContext(context)
+    const hypostyle = useHypostyle()
     const cleaned = hypostyle.pick(props)
 
     return React.createElement(as, {
@@ -33,7 +42,7 @@ const Box = React.forwardRef(
 
 function compose (as, styles) {
   return React.forwardRef((props, ref) => {
-    const hypostyle = React.useContext(context)
+    const hypostyle = useHypostyle()
     const cleaned = hypostyle.pick(props)
 
     const p = {
@@ -54,6 +63,8 @@ function compose (as, styles) {
 }
 
 module.exports = {
+  useHypostyle,
+  useTheme,
   Hypo,
   Box,
   compose
