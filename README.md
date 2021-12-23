@@ -1,8 +1,6 @@
-![@hypobox/react](https://user-images.githubusercontent.com/4732330/96394851-af58f800-1188-11eb-8922-6a3a555d74fd.png)
+# @hypobox/react
 
-<br/>
-
-![npm](https://img.shields.io/npm/v/@hypobox/react) [![](https://badgen.net/bundlephobia/minzip/@hypobox/react)](https://bundlephobia.com/result?p=@hypobox/react)
+[![npm version](https://img.shields.io/npm/v/@hypobox/react?style=flat&colorA=4488FF&colorB=4488FF)](https://www.npmjs.com/package/@hypobox/react) [![test coverage](https://img.shields.io/coveralls/github/sure-thing/@hypobox/react?style=flat&colorA=223355&colorB=223355)](https://coveralls.io/github/sure-thing/@hypobox/react?branch=main) [![npm bundle size](https://badgen.net/bundlephobia/minzip/@hypobox/react?color=223355&labelColor=223355)](https://bundlephobia.com/result?p=@hypobox/react)
 
 Minimalist CSS-in-JS solution for React. Built with
 [hypostyle](https://github.com/sure-thing/hypostyle).
