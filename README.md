@@ -43,8 +43,8 @@ In `hypobox`, all styling is done via the `Box` component.
 ```jsx
 import { Box } from '@hypobox/react'
 
-function App () {
-  return <Box color='tomato'>Hello world!</Box>
+function App() {
+  return <Box color="tomato">Hello world!</Box>
 }
 ```
 
@@ -52,7 +52,7 @@ If you've configured `shorthands` in your `hypostyle` instance (or are using
 the presets), you can also use those:
 
 ```jsx
-<Box c='tomato'>Hello world!</Box>
+<Box c="tomato">Hello world!</Box>
 ```
 
 ### Responsive Styles
@@ -77,25 +77,25 @@ Or:
 ```jsx
 const instance = hypostyle({
   macros: {
-    caps: { textTransform: 'uppercase' }
+    caps: { textTransform: 'uppercase' },
   },
   variants: {
     link: {
       primary: {
         c: 'blue',
         '&:hover': {
-          c: 'black'
-        }
-      }
-    }
-  }
+          c: 'black',
+        },
+      },
+    },
+  },
 })
 ```
 
 You can reference those values like this:
 
 ```jsx
-<Box as='a' caps link='primary'>
+<Box as="a" caps link="primary">
   Click me!
 </Box>
 ```
@@ -119,8 +119,8 @@ callled with the full `theme` you passed you `hypostyle` instance:
 
 ```jsx
 <Box
-  cx={theme => ({
-    c: theme.tokens.colors.primary
+  cx={(theme) => ({
+    c: theme.tokens.colors.primary,
   })}
 />
 ```
