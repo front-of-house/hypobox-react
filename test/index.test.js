@@ -35,7 +35,7 @@ module.exports = (test, assert) => {
     const hypo = hypostyle(presets)
     const html = renderToString(
       <Hypo hypostyle={hypo}>
-        <Box as='img' src='' />
+        <Box as="img" src="" />
       </Hypo>
     )
 
@@ -46,7 +46,7 @@ module.exports = (test, assert) => {
     const hypo = hypostyle(presets)
     const html = renderToString(
       <Hypo hypostyle={hypo}>
-        <Box className='foo' w={10} />
+        <Box className="foo" w={10} />
       </Hypo>
     )
 
@@ -58,7 +58,7 @@ module.exports = (test, assert) => {
     renderToString(
       <Hypo hypostyle={hypo}>
         <Box cx={{ bg: 'white' }} />
-        <Box cx={theme => ({ fontSize: theme.tokens.fontSize[0] })} />
+        <Box cx={(theme) => ({ fontSize: theme.tokens.fontSize[0] })} />
       </Hypo>
     )
     const sheet = hypo.flush()
@@ -72,13 +72,13 @@ module.exports = (test, assert) => {
       ...presets,
       tokens: {
         color: {
-          b: 'blue'
-        }
-      }
+          b: 'blue',
+        },
+      },
     })
     renderToString(
       <Hypo hypostyle={hypo}>
-        <Box className='foo' c='b' />
+        <Box className="foo" c="b" />
       </Hypo>
     )
     const sheet = hypo.flush()
@@ -90,26 +90,26 @@ module.exports = (test, assert) => {
     const hypo = hypostyle(presets)
 
     const H1 = compose('h1', {
-      fs: '30px'
+      fs: '30px',
     })
     const H2 = compose('h2', {
       fs: '20px',
-      c: 'tomato'
+      c: 'tomato',
     })
     const A = compose('a', {
-      c: 'blue'
+      c: 'blue',
     })
     const A2 = compose(A, {
-      c: 'red'
+      c: 'red',
     })
-    const Fn = compose('div', theme => ({
-      fs: theme.tokens.fontSize[1]
+    const Fn = compose('div', (theme) => ({
+      fs: theme.tokens.fontSize[1],
     }))
 
     const html = renderToString(
       <Hypo hypostyle={hypo}>
         <H1 />
-        <H2 c='black' />
+        <H2 c="black" />
         <A2 />
         <Fn />
       </Hypo>
@@ -132,12 +132,12 @@ module.exports = (test, assert) => {
 
     const H1 = compose('h1', {
       color: 'blue',
-      fs: [2, 2, 1]
+      fs: [2, 2, 1],
     })
 
     renderToString(
       <Hypo hypostyle={hypo}>
-        <H1 c='tomato' fontSize='20px' />
+        <H1 c="tomato" fontSize="20px" />
       </Hypo>
     )
     const sheet = hypo.flush()
