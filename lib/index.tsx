@@ -1,11 +1,15 @@
 import React from 'react'
 import { Hypostyle, HypostyleObject, HypostyleObjectOrFunction } from 'hypostyle'
+import { Properties as CSSProperties } from 'csstype'
+
+type CSSPropertyNames = keyof CSSProperties
 
 export type As = keyof JSX.IntrinsicElements
 export type HypoProps = { hypostyle: Hypostyle }
 export type BoxProps = {
   as?: As
   cx?: HypostyleObjectOrFunction
+  style?: { [property in CSSPropertyNames]: string | number }
 } & HypostyleObject
 
 var context = React.createContext({} as Hypostyle)
@@ -46,7 +50,7 @@ export var Box = React.forwardRef<HTMLElement, BoxProps>((p, ref) => {
   return React.createElement(element, {
     ref,
     ...picked.props,
-    className: [className, css]
+    className: ([className, css] as string[])
       .filter(Boolean)
       .map((s) => s.trim())
       .join(' '),

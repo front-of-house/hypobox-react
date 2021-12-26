@@ -48,5 +48,8 @@
   "peerDependencies": {
     "hypostyle": "3",
     "react": "16"
+  },
+  "dependencies": {
+    "csstype": "^3.0.10"
   }
 }

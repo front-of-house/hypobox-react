@@ -11,6 +11,7 @@ specifiers:
   baretest: ^2.0.0
   c8: ^7.10.0
   commitlint: ^15.0.0
+  csstype: ^3.0.10
   esbuild: ^0.14.7
   esbuild-register: ^3.2.1
   husky: ^7.0.4
@@ -22,6 +23,9 @@ specifiers:
   semantic-release: ^18.0.1
   typescript: ^4.5.4
   uvu: ^0.5.2
+
+dependencies:
+  csstype: 3.0.10
 
 devDependencies:
   '@commitlint/cli': 15.0.0
@@ -898,7 +902,6 @@ packages:
 
   /csstype/3.0.10:
     resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==}
-    dev: true
 
   /dargs/7.0.0:
     resolution: {integrity: sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==}
