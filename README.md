@@ -6,7 +6,7 @@ Minimalist CSS-in-JS solution for React. Built with
 [hypostyle](https://github.com/sure-thing/hypostyle).
 
 ```bash
-npm i @hypobox/react hypostyle
+npm i @hypobox/react hypostyle react
 ```
 
 ## Usage

@@ -9,6 +9,6 @@ require('esbuild').buildSync({
   minify: true,
   platform: 'node',
   target: 'es5',
-  external: [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies)],
+  external: ['react', ...Object.keys(pkg.dependencies)],
   logLevel: 'info',
 })
