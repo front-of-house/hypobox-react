@@ -10,6 +10,7 @@ export type BoxProps = {
   as?: As
   cx?: HypostyleObjectOrFunction
   style?: { [property in CSSPropertyNames]: string | number }
+  debug?: boolean
 } & HypostyleObject
 
 var context = React.createContext({} as Hypostyle)
@@ -38,14 +39,21 @@ export var Box = React.forwardRef<HTMLElement, BoxProps>((p, ref) => {
   var element = picked.props.as || 'div'
   var cx = picked.props.cx || {}
   var className = picked.props.className
+  var debug = picked.props.debug
 
-  var css = hypostyle.css({
+  var exploded = {
     ...hypostyle.explode(picked.styles), // custom attr
     ...hypostyle.explode(cx || {}), // custom cx
-  })
+  }
+  var css = hypostyle.css(exploded)
 
   delete picked.props.as
   delete picked.props.cx
+  delete picked.props.debug
+
+  if (debug) {
+    console.log(`@hypobox/react [debug] .${css}`, JSON.stringify(hypostyle.style(exploded), null, 2))
+  }
 
   return React.createElement(element, {
     ref,

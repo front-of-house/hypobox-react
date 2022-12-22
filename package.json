@@ -36,7 +36,7 @@
     "esbuild": "^0.14.7",
     "esbuild-register": "^3.2.1",
     "husky": "^7.0.4",
-    "hypostyle": "^3.2.5",
+    "hypostyle": "^3.3.2",
     "is-ci": "^3.0.1",
     "prettier": "^2.5.1",
     "react": "^18.2.0",
@@ -46,7 +46,6 @@
     "uvu": "^0.5.2"
   },
   "dependencies": {
-    "csstype": "^3.0.10",
-    "hypostyle": "^3.2.6"
+    "csstype": "^3.0.10"
   }
 }
